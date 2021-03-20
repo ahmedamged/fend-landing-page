@@ -2,8 +2,8 @@
  *
  * CSS written based on SMACSS architecture.
  * To learn more, visit: http://smacss.com/
- * 
- * For simplicity, no reset or normalize is added. 
+ *
+ * For simplicity, no reset or normalize is added.
  * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
  *
 */
@@ -64,10 +64,20 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
+.navbar__menu{
+  display: flex;
+  justify-content: center;
+  background: #96cbb4;
+  border-bottom: 2px solid #02113e;
+}
+
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
     text-align: right;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
 }
 
 .navbar__menu li {
@@ -80,12 +90,17 @@ section {
     font-weight: bold;
     text-decoration: none;
     color: #000;
+    cursor: pointer;
 }
 
 .navbar__menu .menu__link:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
+}
+
+.menu__link.active__link{
+  background-color: #4f978a;
 }
 
 /* Header Styles */
@@ -108,6 +123,37 @@ section {
     color: #fff;
 }
 
+/* Go to top button */
+
+.top__btn{
+  font-family: 'Merriweather', serif;
+  position: fixed;
+  bottom: 24px;
+  right: 32px;
+  padding: 12px;
+  background-color: #0d1f47;
+  color: #96cbb4;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.top__btn:hover{
+  background-color: #96cbb4;
+  color: #0d1f47;
+}
+
+/* Hamburger button */
+
+.hamburger__btn{
+  display: none;
+  margin: 12px 16px 8px 16px;
+}
+
+.hamburger__btn svg{
+  cursor: pointer;
+}
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
@@ -123,10 +169,31 @@ section {
     }
 }
 
+@media only screen and (max-width: 768px) {
+  .navbar__menu{
+    justify-content: flex-start;
+  }
+  .navbar__menu ul {
+    flex-direction: column;
+    padding: 15px 0;
+    display: none;
+  }
+  .main__hero{
+   padding-top: 25px;
+  }
+  .menu__link.active__link,
+  .menu__link:hover{
+    border-radius: 5px;
+  }
+  .hamburger__btn{
+    display: block;
+  }
+}
+
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
     margin-left: auto;
-    text-align: right; 
+    text-align: right;
 }
 
 /* Background Circles */
@@ -217,7 +284,7 @@ section.your-active-class .landing__container::after {
 	}
 	to {
 		transform: rotate(360deg)
-		           translate(-1em) 
+		           translate(-1em)
 		           rotate(-360deg);
 	}
 }
