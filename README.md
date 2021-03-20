@@ -4,6 +4,8 @@
 
 * [Project Information](#information)
 
+* [Project Link](https://ahmedamged.github.io/fend-landing-page)
+
 ## Information
 
 Navigation menu is built dynamically.
