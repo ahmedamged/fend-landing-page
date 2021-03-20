@@ -19,10 +19,15 @@
 */
 
 let navMenu = document.querySelector('#navbar__list');
+let navBar = document.querySelector('.navbar__menu');
 let pageSections = document.querySelectorAll('section');
 let docFragment = document.createDocumentFragment();
 let topBtn = document.querySelector('.top__btn');
 let hamBtn = document.querySelector('.hamburger__btn');
+let sectionHeadings = document.querySelectorAll('.landing__container h2');
+let sectionContent = document.querySelectorAll('.section__content');
+let arrowIcons = document.querySelectorAll('.arrow__icons');
+let isScrolling;
 
 /**
  * End Global Variables
@@ -39,6 +44,41 @@ function checkTopBtnDispaly() {
   } else {
     topBtn.style.visibility = 'visible';
     topBtn.style.opacity = '1';
+  }
+}
+
+function collapseSections(index) {
+  if(pageSections[index].style.height != '0px') {
+      pageSections[index].style.height = '0px';
+      pageSections[index].style.minHeight = '50vh';
+      sectionContent[index].style.opacity = '0';
+      arrowIcons[index].innerHTML = `<svg width="50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 48 48" style="margin-top: 40px;enable-background:new 0 0 48 48;" xml:space="preserve">
+        <style type="text/css">
+          .st0{fill:#FFFFFF;}
+          .st1{fill:none;}
+        </style>
+        <path class="st0" d="M14.8,30.8l9.2-9.2l9.2,9.2L36,28L24,16L12,28L14.8,30.8z"/>
+        <path class="st1" d="M0,0h48v48H0V0z"/>
+      </svg>`;
+  } else {
+      pageSections[index].style.height = 'max-content';
+      pageSections[index].style.minHeight = '80vh';
+      sectionContent[index].style.opacity = '1';
+      arrowIcons[index].innerHTML = `<svg width="50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="margin-top: 40px;enable-background:new 0 0 512 512;" xml:space="preserve" width="50">
+        <style type="text/css">
+          .st0{clip-path:url(#SVGID_2_);fill:#FFFFFF;}
+        </style>
+        <g>
+          <defs>
+            <rect id="SVGID_1_" width="512" height="512"></rect>
+          </defs>
+          <clipPath id="SVGID_2_">
+            <use xlink:href="#SVGID_1_" style="overflow:visible;"></use>
+          </clipPath>
+          <polygon class="st0" points="158.2,175.1 256,273 353.8,175.1 384,205.3 256,333.3 128,205.3"></polygon>
+        </g>
+      </svg>`;
   }
 }
 
@@ -76,7 +116,7 @@ for (let i = 0; i < pageSections.length; i++) {
 // Append the fragement to nav menu
 navMenu.appendChild(docFragment);
 
-// call checkTopBtnDispaly to hide 'go to top' button
+// Call checkTopBtnDispaly to hide 'go to top' button
 checkTopBtnDispaly();
 
 // Add class 'active' to section when near top of viewport
@@ -96,9 +136,21 @@ window.addEventListener('scroll', () => {
       navLinks[i].classList.add('active__link');
     }
   });
+
+  navBar.style.display = 'flex';
+  // Hide navigation bar when the user is no longer scrolling
+
+  // Clear timeout throughout the scroll
+  this.clearTimeout( isScrolling );
+
+  // Set a timeout to run after scrolling ends
+  isScrolling = setTimeout(() => {
+    navBar.style.display = 'none';
+  }, 2000);
+
 });
 
-// Show nav menu when window has been resized
+// Show nav menu when window is resized
 
 window.addEventListener('resize', () => {
     if(window.innerWidth > 768 && navMenu.style.display === 'none'){
@@ -136,3 +188,14 @@ hamBtn.addEventListener('click', () => {
     navMenu.style.display = 'none';
   }
 });
+
+// Collapse sections
+
+for (let i = 0; i < sectionHeadings.length; i++) {
+  sectionHeadings[i].addEventListener('click', () => {
+    collapseSections(i);
+  });
+  arrowIcons[i].addEventListener('click', () => {
+    collapseSections(i);
+  });
+}

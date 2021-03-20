@@ -21,3 +21,7 @@ Navigation menu has an appropriate view across all screens.
 When clicking on 'go to top' button, the window is scrolled to the top.
 
 Code is formatted with consistent, logical, and easy-to-read formatting.
+
+Sections are collapsible and can be expanded.
+
+Navigation bar is hidden when the user no longer scrolling.

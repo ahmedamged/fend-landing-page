@@ -58,6 +58,11 @@ main {
 section {
     position: relative;
     min-height: 80vh;
+    transition: all 5s linear;
+    -moz-transition: all 5s linear;
+    -ms-transition: all 5s linear;
+    -o-transition: all 5s linear;
+    -webkit-transition: all 5s linear;
 }
 
 
@@ -97,6 +102,10 @@ section {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
+    -moz-transition: ease 0.3s all;
+    -ms-transition: ease 0.3s all;
+    -o-transition: ease 0.3s all;
+    -webkit-transition: ease 0.3s all;
 }
 
 .menu__link.active__link{
@@ -114,6 +123,7 @@ section {
 
 /* Footer Styles */
 .page__footer {
+    height: 100px;
     background: #000;
     padding: 3em;
     color: #fff;
@@ -138,6 +148,10 @@ section {
   cursor: pointer;
   outline: none;
   transition: opacity 2s ease-out;
+  -moz-transition: opacity 2s ease-out;
+  -ms-transition: opacity 2s ease-out;
+  -o-transition: opacity 2s ease-out;
+  -webkit-transition: opacity 2s ease-out;
 }
 
 .top__btn:hover{
@@ -152,7 +166,22 @@ section {
   margin: 12px 16px 8px 16px;
 }
 
-.hamburger__btn svg{
+.hamburger__btn svg,
+.landing__container h2{
+  cursor: pointer;
+}
+
+/* Collapsing section contents styles */
+
+.section__content{
+  transition: opacity 5s ease-out;
+  -moz-transition: opacity 5s ease-out;
+  -ms-transition: opacity 5s ease-out;
+  -o-transition: opacity 5s ease-out;
+  -webkit-transition: opacity 5s ease-out;
+}
+
+.arrow__icons{
   cursor: pointer;
 }
 
@@ -189,6 +218,14 @@ section {
   .hamburger__btn{
     display: block;
   }
+}
+
+section:nth-of-type(even) .arrow__icons svg{
+  float: left;
+}
+
+section:nth-of-type(odd) .arrow__icons svg{
+  float: right;
 }
 
 section:nth-of-type(even) .landing__container {
