@@ -2,12 +2,20 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Project Information](#information)
 
-## Instructions
+## Information
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Navigation menu is built dynamically.
 
-To get started, open `js/app.js` and start building out the app's functionality
+All features are usable across modern desktop, tablet, and phone browsers.
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+While scrolling the page, the section in the viewport shown as active section as well as the navigation menu link related to that section.
+
+When clicking any navigation menu link, the section related to that link is shown.
+
+Navigation menu has an appropriate view across all screens.
+
+When clicking on 'go to top' button, the window is scrolled to the top.
+
+Code is formatted with consistent, logical, and easy-to-read formatting.
