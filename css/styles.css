@@ -137,6 +137,7 @@ section {
   border-radius: 5px;
   cursor: pointer;
   outline: none;
+  transition: opacity 2s ease-out;
 }
 
 .top__btn:hover{

@@ -34,9 +34,11 @@ let hamBtn = document.querySelector('.hamburger__btn');
 
 function checkTopBtnDispaly() {
   if(window.scrollY >= 0 && window.scrollY < 250){
-    topBtn.style.display = 'none';
+    topBtn.style.visibility = 'hidden';
+    topBtn.style.opacity = '0';
   } else {
-    topBtn.style.display = 'block';
+    topBtn.style.visibility = 'visible';
+    topBtn.style.opacity = '1';
   }
 }
 
